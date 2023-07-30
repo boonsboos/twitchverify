@@ -8,6 +8,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentBuilder;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -35,12 +36,12 @@ public class VerifyCommand implements SimpleCommand {
             return;
         }
 
-        String link = "verify.boonsboos.nl/?username=" + invocation.arguments()[0];
+        String link = "verify.boonsboos.nl/?twitchuser=" + invocation.arguments()[0] + "&mcuser=" + p.getUniqueId();
 
         p.sendMessage(
             Component.text("Click here to verify your twitch account: ")
-                .append(Component.text(link)
-                    .clickEvent(ClickEvent.openUrl(link)))
+                .append(Component.text("Verify", TextColor.fromHexString("#3D6BBa"), TextDecoration.BOLD)
+                        .clickEvent(ClickEvent.openUrl(link)))
         );
 
         // we now wait for the user to verify their account
