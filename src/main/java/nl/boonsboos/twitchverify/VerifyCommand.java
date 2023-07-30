@@ -7,6 +7,7 @@ import com.velocitypowered.api.proxy.ProxyServer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentBuilder;
 import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.format.TextColor;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -28,6 +29,11 @@ public class VerifyCommand implements SimpleCommand {
     @Override
     public void execute(Invocation invocation) {
         Player p = (Player) invocation.source();
+
+        if (invocation.arguments().length == 0) {
+            p.sendMessage(Component.text("Please enter your twitch username!", TextColor.fromHexString("#FF0000")));
+            return;
+        }
 
         String link = "verify.boonsboos.nl/?username=" + invocation.arguments()[0];
 
