@@ -43,7 +43,8 @@ public class VerifyCommand implements SimpleCommand {
                     .clickEvent(ClickEvent.openUrl(link)))
         );
 
-        p.createConnectionRequest(server.getServer("smp").get()).fireAndForget();
+        // we now wait for the user to verify their account
+        // at which point the web service will RCON into the proxy and send the user to the smp
     }
 
     @Override
